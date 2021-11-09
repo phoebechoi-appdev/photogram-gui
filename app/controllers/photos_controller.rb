@@ -8,4 +8,12 @@ class PhotosController < ApplicationController
     render({ :template => "photo_templates/index.html.erb"})
   end 
 
+  def show
+    url_id = params.fetch("path_id")
+    matching_photos = Photo.where({ :id => url_id })
+    @the_photo = matching_photos.at(0) #what does matching_photos look like? why do I need .at(0)?
+    #Parameters: {"path_id"=>"777"}
+    render({ :template => "photo_templates/show.html.erb"})
+  end
+
 end
