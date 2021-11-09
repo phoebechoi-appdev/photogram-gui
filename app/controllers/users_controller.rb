@@ -12,11 +12,11 @@ class UsersController <ApplicationController
     matching_usernames = User.where({ :username => url_username})
     @the_user = matching_usernames.first
  
-    if @the_user == nil
-      redirect_to("/404")
-    else
+    #if @the_user == nil
+      #redirect_to("/404")
+    #else
     render({ :template => "user_templates/show.html.erb"})
-    end
+    #end
   end
 
   def create
@@ -29,6 +29,26 @@ class UsersController <ApplicationController
     redirect_to("/users/" + a_new_username.username.to_s)
     #render({ :template => "user_templates/create.html.erb"})
     
+  end
+
+  def update
+
+  #Parameters: {"query_username"=>"phoebe", "modify_username"=>"123"}
+  the_id = params.fetch("modify_username")
+  matching_users = User.where({ :id => the_id})
+
+  @the_user = matching_users.at(0)
+
+  input_username = params.fetch("query_username")
+
+  @the_user.username = input_username 
+
+  @the_user.save
+
+  next_url = "/users/" + @the_user.id.to_s
+  redirect_to(next_url)
+    #why is user name not updating
+  #render({ :template => "user_templates/update.html.erb" })
   end
 
 end

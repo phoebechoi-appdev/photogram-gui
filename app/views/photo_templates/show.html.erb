@@ -31,7 +31,7 @@
       <textarea id="browser_caption" name="query_caption" placeholder="Enter a caption for the photo..."><%= @the_photo.caption %></textarea>
 
       <button>Update photo</button>
-    </form>
+    </form>r
   </dd>
 
   <dt>Delete photo</dt>
@@ -65,7 +65,7 @@
 
 <form action="/insert_comment_record">
   <label for="browser_photo_id">Photo ID</label>
-  <input id="browser_photo_id" type="text" value="777" name="query_photo_id">
+  <input id="browser_photo_id" type="text" value="<%= @the_photo.id %>" name="query_photo_id">
 
   <label for="browser_author_id">Author ID</label>
   <input id="browser_author_id" type="text" name="query_author_id">
