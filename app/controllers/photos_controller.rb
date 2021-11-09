@@ -16,4 +16,15 @@ class PhotosController < ApplicationController
     render({ :template => "photo_templates/show.html.erb"})
   end
 
+  def baii
+    #Parameters: {"toast_id"=>"765;"}
+    the_id = params.fetch("toast_id")
+    matching_photos = Photo.where({ :id => the_id })
+    the_photo = matching_photos.first
+    the_photo.destroy 
+    
+    #render({ :template => "photo_templates/baii.html.erb"})
+    redirect_to("/photos")
+  end
+
 end
