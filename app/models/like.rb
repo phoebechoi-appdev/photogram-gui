@@ -22,7 +22,7 @@ class Like < ApplicationRecord
     matching_users = User.where({ :id => my_fan_id })
 
     the_user = matching_users.at(0)
-
+    # does this show user name? how to see what is the first item?
     return the_user
   end
 
